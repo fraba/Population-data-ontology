@@ -716,7 +716,9 @@
 
     <!-- http://purl.org/popdata#Event -->
 
-    <owl:Class rdf:about="http://purl.org/popdata#Event"/>
+    <owl:Class rdf:about="http://purl.org/popdata#Event">
+        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1656682</owl:sameAs>
+    </owl:Class>
     
 
 
