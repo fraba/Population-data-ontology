@@ -708,7 +708,9 @@
 
     <!-- http://purl.org/popdata#Electorate -->
 
-    <owl:Class rdf:about="http://purl.org/popdata#Electorate"/>
+    <owl:Class rdf:about="http://purl.org/popdata#Electorate">
+        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q398089</owl:sameAs>
+    </owl:Class>
     
 
 
