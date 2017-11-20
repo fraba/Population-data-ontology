@@ -34,6 +34,12 @@
     
 
 
+    <!-- http://www.wikidata.org/prop/direct/P1793 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.wikidata.org/prop/direct/P1793"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -87,6 +93,15 @@
     <owl:ObjectProperty rdf:about="http://purl.org/popdata#describes">
         <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/popdata#electionFor -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/popdata#electionFor">
+        <rdfs:domain rdf:resource="http://purl.org/popdata#Election"/>
+        <rdfs:range rdf:resource="http://purl.org/popdata#Institution"/>
     </owl:ObjectProperty>
     
 
@@ -457,11 +472,28 @@
     
 
 
+    <!-- http://purl.org/popdata#identification -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#identification"/>
+    
+
+
     <!-- http://purl.org/popdata#invalidVotes -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#invalidVotes">
         <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
         <rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/Q2738441</rdfs:seeAlso>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#istat6d -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#istat6d">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#identification"/>
+        <rdfs:comment xml:lang="en">Identifier for municipalities (&quot;comuni&quot; in Italian) in Italy. It is determined by the province of the municipality. If the province changes the identifier will change accordingly. The first 3 digits indicate the province (&quot;provincia&quot; in Italian).</rdfs:comment>
+        <rdfs:seeAlso xml:lang="en">http://www.istat.it/it/archivio/6789</rdfs:seeAlso>
+        <owl:sameAs xml:lang="en">https://www.wikidata.org/entity/Property:P635</owl:sameAs>
     </owl:DatatypeProperty>
     
 
@@ -523,6 +555,8 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#sampleSize">
         <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:seeAlso xml:lang="en">number of people included in a survey</rdfs:seeAlso>
     </owl:DatatypeProperty>
     
@@ -1064,7 +1098,7 @@
     <!-- http://purl.org/popdata#Statistic001 -->
 
     <owl:NamedIndividual rdf:about="http://purl.org/popdata#Statistic001">
-        <rdf:type rdf:resource="http://purl.org/popdata#Statistic"/>
+        <rdf:type rdf:resource="http://purl.org/popdata#ElectoralStatistic"/>
         <assignedVotes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">567</assignedVotes>
     </owl:NamedIndividual>
     
