@@ -970,13 +970,7 @@
 
     <!-- http://www.w3.org/2002/07/owl#Ontology -->
 
-    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Ontology">
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-09-21</dc:date>
-        <rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Population data ontology</rdfs:label>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Ontology"/>
     
 
 
@@ -1034,6 +1028,19 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/popdata#Ontology -->
+
+    <owl:Ontology rdf:about="http://purl.org/popdata#Ontology">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
+        <dc:date xml:lang="en">2017-09-21</dc:date>
+        <rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
+        <rdfs:label xml:lang="en">Population data ontology (PPDT)</rdfs:label>
+        <owl:versionInfo xml:lang="en">0.1</owl:versionInfo>
+    </owl:Ontology>
     
 
 
