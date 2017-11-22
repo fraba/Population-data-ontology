@@ -748,7 +748,7 @@
     <!-- http://purl.org/popdata#Event -->
 
     <owl:Class rdf:about="http://purl.org/popdata#Event">
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1656682</owl:equivalentClass>
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q1656682"/>
     </owl:Class>
     
 
@@ -1017,6 +1017,12 @@
     <!-- http://www.w3.org/2006/timer#time:TemporalEntity -->
 
     <owl:Class rdf:about="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q1656682 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q1656682"/>
     
 
 
