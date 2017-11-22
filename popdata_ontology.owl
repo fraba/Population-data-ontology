@@ -14,7 +14,13 @@
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:time="http://www.w3.org/2006/time#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://purl.org/popdata"/>
+    <owl:Ontology rdf:about="http://purl.org/popdata">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
+        <owl:versionInfo xml:lang="en">0.1</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
+        <rdfs:label xml:lang="en">Population data ontology (PPDT)</rdfs:label>
+        <dc:date xml:lang="en">2017-09-21</dc:date>
+    </owl:Ontology>
     
 
 
@@ -41,9 +47,15 @@
     
 
 
-    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+    <!-- http://www.w3.org/2002/07/owl#equivalentClass -->
 
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#sameAs"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#equivalentProperty -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentProperty"/>
     
 
 
@@ -512,7 +524,7 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#identification"/>
         <rdfs:comment xml:lang="en">Identifier for municipalities (&quot;comuni&quot; in Italian) in Italy. It is determined by the province of the municipality. If the province changes the identifier will change accordingly. The first 3 digits indicate the province (&quot;provincia&quot; in Italian).</rdfs:comment>
         <rdfs:seeAlso xml:lang="en">http://www.istat.it/it/archivio/6789</rdfs:seeAlso>
-        <owl:sameAs xml:lang="en">https://www.wikidata.org/entity/Property:P635</owl:sameAs>
+        <owl:equivalentProperty rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/P635</owl:equivalentProperty>
     </owl:DatatypeProperty>
     
 
@@ -728,7 +740,7 @@
     <!-- http://purl.org/popdata#Electorate -->
 
     <owl:Class rdf:about="http://purl.org/popdata#Electorate">
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q398089</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q398089</owl:equivalentClass>
     </owl:Class>
     
 
@@ -736,7 +748,7 @@
     <!-- http://purl.org/popdata#Event -->
 
     <owl:Class rdf:about="http://purl.org/popdata#Event">
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1656682</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1656682</owl:equivalentClass>
     </owl:Class>
     
 
@@ -769,7 +781,7 @@
 
     <owl:Class rdf:about="http://purl.org/popdata#Institution">
         <rdfs:comment xml:lang="en">structure or mechanism of social order and cooperation governing the behaviour of a population</rdfs:comment>
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q178706</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q178706</owl:equivalentClass>
     </owl:Class>
     
 
@@ -788,7 +800,7 @@
     <owl:Class rdf:about="http://purl.org/popdata#Office">
         <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Institution"/>
         <rdfs:comment xml:lang="en">service exercised within a public administration</rdfs:comment>
-        <owl:sameAs xml:lang="en">https://www.wikidata.org/entity/Q294414</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q294414</owl:equivalentClass>
     </owl:Class>
     
 
@@ -796,8 +808,8 @@
     <!-- http://purl.org/popdata#Place -->
 
     <owl:Class rdf:about="http://purl.org/popdata#Place">
-        <owl:sameAs xml:lang="en">geographic point or area</owl:sameAs>
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q2221906</owl:sameAs>
+        <rdfs:comment xml:lang="en">geographic point or area</rdfs:comment>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q2221906</owl:equivalentClass>
     </owl:Class>
     
 
@@ -820,7 +832,7 @@
 
     <owl:Class rdf:about="http://purl.org/popdata#Population">
         <rdfs:comment xml:lang="en">human population that inhabits a place</rdfs:comment>
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q33829</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q33829</owl:equivalentClass>
     </owl:Class>
     
 
@@ -917,7 +929,7 @@
     <owl:Class rdf:about="http://purl.org/popdata#Voting">
         <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Act"/>
         <rdfs:comment xml:lang="en">act of an electorate to make a decision or express an opinion</rdfs:comment>
-        <owl:sameAs rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q189760</owl:sameAs>
+        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q189760</owl:equivalentClass>
     </owl:Class>
     
 
@@ -1033,14 +1045,7 @@
 
     <!-- http://purl.org/popdata#Ontology -->
 
-    <owl:Ontology rdf:about="http://purl.org/popdata#Ontology">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
-        <dc:date xml:lang="en">2017-09-21</dc:date>
-        <rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
-        <rdfs:label xml:lang="en">Population data ontology (PPDT)</rdfs:label>
-        <owl:versionInfo xml:lang="en">0.1</owl:versionInfo>
-    </owl:Ontology>
+    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Ontology"/>
     
 
 

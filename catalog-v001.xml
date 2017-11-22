@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1511224204775" name="http://purl.org/popdata" uri="popdata_ontology.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1511224204775" name="http://www.semanticweb.org/francesco/ontologies/2017/4/untitled-ontology-65" uri="election_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1511392464222" name="http://purl.org/popdata" uri="popdata_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1511392464222" name="http://www.semanticweb.org/francesco/ontologies/2017/4/untitled-ontology-65" uri="election_ontology.owl"/>
     </group>
 </catalog>
