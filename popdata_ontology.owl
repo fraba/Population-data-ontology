@@ -1,1280 +1,1129 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.org/popdata#"
-     xml:base="http://purl.org/popdata"
-     xmlns:ppdt="http://purl.org/popdata#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:wdt="http://www.wikidata.org/prop/direct/"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:frbr="http://purl.org/vocab/frbr/core#"
-     xmlns:wd="http://www.wikidata.org/entity/"
-     xmlns:geo="http://www.opengis.net/ont/geosparql#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
-     xmlns:time="http://www.w3.org/2006/time#"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://purl.org/popdata">
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
-        <owl:versionInfo xml:lang="en">0.1</owl:versionInfo>
-        <rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
-        <rdfs:label xml:lang="en">Population data ontology (PPDT)</rdfs:label>
-        <dc:date xml:lang="en">2017-09-21</dc:date>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/creator -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/date -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#equivalentClass -->
-
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentClass"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#equivalentProperty -->
-
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentProperty"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#versionInfo -->
-
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
-    
-
-
-    <!-- http://www.wikidata.org/prop/direct/P1793 -->
-
-    <owl:AnnotationProperty rdf:about="http://www.wikidata.org/prop/direct/P1793"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.w3.org/2001/XMLSchema#date -->
-
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
-    
-
-
-    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
-
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
-    
-
-
-    <!-- http://www.w3.org/2001/XMLSchema#gYearMonth -->
-
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/popdata#definedBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#definedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#describes -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#describes">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#electionFor -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#electionFor">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Election"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Institution"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#followedBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#followedBy">
-        <owl:inverseOf rdf:resource="http://purl.org/popdata#follows"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#follows -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#follows">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Place"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#getsSpatialExtentFrom -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#getsSpatialExtentFrom">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <owl:inverseOf rdf:resource="http://purl.org/popdata#givesSpatialExtentTo"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#givesSpatialExtentTo -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#givesSpatialExtentTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasElectorate -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasElectorate">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Voting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Electorate"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasPart -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasPart">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <owl:inverseOf rdf:resource="http://purl.org/popdata#partOf"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#HierarchicalSetting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#HierarchicalSetting"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasPopulation -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasPopulation">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Electorate"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Population"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasSource -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasSource">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasSpatialScope -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasSpatialScope">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#SpatialScope"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasTemporalScope -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasTemporalScope">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#TemporalScope"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#hasType -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#hasType">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#PlaceType"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#partOf -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#partOf">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Voting"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Place"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#VotingEvent"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#sanctions -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#sanctions">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Result"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#VotingEvent"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#scopedBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#scopedBy">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#setBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#setBy">
-        <owl:inverseOf rdf:resource="http://purl.org/popdata#sets"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
-        <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#sets -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#sets">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-        <rdfs:range rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#spatiallyDefinedBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#spatiallyDefinedBy">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#definedBy"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#SpatialExtent"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Feature"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/popdata#temporallyDefinedBy -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/popdata#temporallyDefinedBy">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#definedBy"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#TemporalExtent"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#hasValue -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#hasValue">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#sameAs -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#sameAs"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
-
-    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#hasGeometry -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#hasGeometry">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Feature"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Geometry"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#hasBeginning -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#hasEnd -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/popdata#ageVoters -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#ageVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-        <rdfs:comment xml:lang="en">size of the voting-age population of the electorate</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#agricultureStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#agricultureStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#assignedVotes -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#assignedVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-        <rdfs:comment xml:lang="en">number of votes assigned to something or someone</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#blankVotes -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#blankVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#climateStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#climateStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#consumerStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#consumerStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#economyStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#economyStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#ecosystemsStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#ecosystemsStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#educationStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#educationStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#effectiveVoters -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#effectiveVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#electionStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#electionStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#eligibleVoters -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#eligibleVoters">
-        <owl:equivalentProperty rdf:resource="http://purl.org/popdata#registeredVoters"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-        <rdfs:comment xml:lang="en">number of people formally registered to vote</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#financeStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#financeStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#governmentStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#governmentStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#healthStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#healthStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#identification -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#identification"/>
-    
-
-
-    <!-- http://purl.org/popdata#invalidVotes -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#invalidVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-        <rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/Q2738441</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#istat6d -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#istat6d">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#identification"/>
-        <rdfs:comment xml:lang="en">Identifier for municipalities (&quot;comuni&quot; in Italian) in Italy. It is determined by the province of the municipality. If the province changes the identifier will change accordingly. The first 3 digits indicate the province (&quot;provincia&quot; in Italian).</rdfs:comment>
-        <rdfs:seeAlso xml:lang="en">http://www.istat.it/it/archivio/6789</rdfs:seeAlso>
-        <owl:equivalentProperty rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/P635</owl:equivalentProperty>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#labourForce -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#labourForce">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:comment xml:lang="en">number of people currently and formally employed or selfemployed</rdfs:comment>
-        <rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/Q13440398</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#labourStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#labourStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#manufacturingStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#manufacturingStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#people -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#people">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:comment xml:lang="en">number of people</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#publicSafetyStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#publicSafetyStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#registeredVoters -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#registeredVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#sampleSize -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#sampleSize">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:seeAlso xml:lang="en">number of people included in a survey</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#statistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#statistic">
-        <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#unemployed -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#unemployed">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:seeAlso xml:lang="en">number of people currently in search of a job</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#unemploymentRate -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#unemploymentRate">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:seeAlso xml:lang="en">number of unemployed people divided by the people in the labour force</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#inXSDDate -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDate">
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#inXSDDateTime -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDateTime">
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#inXSDgYear -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDgYear">
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.w3.org/2006/time#inXSDgYearMonth -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDgYearMonth">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/popdata#Act -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Act"/>
-    
-
-
-    <!-- http://purl.org/popdata#AdministrativePlace -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#AdministrativePlace">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Assembly -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Assembly">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Institution"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1752346</rdfs:comment>
-        <rdfs:comment xml:lang="en">organisation that uses parliamentary procedures to make decisions</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#CensusStatistic -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#CensusStatistic">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:comment xml:lang="en">statistic of the entire target population</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Election -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Election">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#VotingEvent"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#ElectoralList -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#ElectoralList">
-        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#ElectoralPlace -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#ElectoralPlace">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#ElectoralStatistic -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#ElectoralStatistic">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:comment xml:lang="en">statistic derived from a formal voting process</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Electorate -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Electorate">
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q398089</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Event -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Event">
-        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q1656682"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#GeographicalSetting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#GeographicalSetting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#HierarchicalSetting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#HierarchicalSetting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#IdentificationalSetting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#IdentificationalSetting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Institution -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Institution">
-        <rdfs:comment xml:lang="en">structure or mechanism of social order and cooperation governing the behaviour of a population</rdfs:comment>
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q178706</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#InstrumentalStatistic -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#InstrumentalStatistic">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:comment xml:lang="en">statistic measured with instruments (e.g. place altitude, tweets published)</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Office -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Office">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Institution"/>
-        <rdfs:comment xml:lang="en">service exercised within a public administration</rdfs:comment>
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q294414</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Place -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Place">
-        <rdfs:comment xml:lang="en">geographic point or area</rdfs:comment>
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q2221906</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#PlaceType -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#PlaceType"/>
-    
-
-
-    <!-- http://purl.org/popdata#PoliticalParty -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#PoliticalParty">
-        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Population -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Population">
-        <rdfs:comment xml:lang="en">human population that inhabits a place</rdfs:comment>
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q33829</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Referendum -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Referendum">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#VotingEvent"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Result -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Result"/>
-    
-
-
-    <!-- http://purl.org/popdata#SampleStatistic -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#SampleStatistic">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
-        <rdfs:comment xml:lang="en">statistic of a sample of the target population</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Setting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Setting"/>
-    
-
-
-    <!-- http://purl.org/popdata#SpatialExtent -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#SpatialExtent">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#SpatialScope"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#SpatialScope -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#SpatialScope"/>
-    
-
-
-    <!-- http://purl.org/popdata#Statistic -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Statistic"/>
-    
-
-
-    <!-- http://purl.org/popdata#StatisticalPlace -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#StatisticalPlace">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#TemporalExtent -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#TemporalExtent">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#TemporalScope"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#TemporalScope -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#TemporalScope"/>
-    
-
-
-    <!-- http://purl.org/popdata#ToponymalSetting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#ToponymalSetting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#TypologicalSetting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#TypologicalSetting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#Voting -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#Voting">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Act"/>
-        <rdfs:comment xml:lang="en">act of an electorate to make a decision or express an opinion</rdfs:comment>
-        <owl:equivalentClass rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q189760</owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/popdata#VotingEvent -->
-
-    <owl:Class rdf:about="http://purl.org/popdata#VotingEvent">
-        <rdfs:subClassOf rdf:resource="http://purl.org/popdata#Event"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/vocab/frbr/core#Book -->
-
-    <owl:Class rdf:about="http://purl.org/vocab/frbr/core#Book">
-        <rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/vocab/frbr/core#BookChapter -->
-
-    <owl:Class rdf:about="http://purl.org/vocab/frbr/core#BookChapter">
-        <rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/vocab/frbr/core#Expression -->
-
-    <owl:Class rdf:about="http://purl.org/vocab/frbr/core#Expression"/>
-    
-
-
-    <!-- http://purl.org/vocab/frbr/core#JournalArticle -->
-
-    <owl:Class rdf:about="http://purl.org/vocab/frbr/core#JournalArticle">
-        <rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/vocab/frbr/core#WebPage -->
-
-    <owl:Class rdf:about="http://purl.org/vocab/frbr/core#WebPage">
-        <rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#Ontology -->
-
-    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Ontology"/>
-    
-
-
-    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Feature -->
-
-    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Feature"/>
-    
-
-
-    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Geometry -->
-
-    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Geometry"/>
-    
-
-
-    <!-- http://www.w3.org/2006/time#time:Instant -->
-
-    <owl:Class rdf:about="http://www.w3.org/2006/time#time:Instant">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/2006/time#time:Interval -->
-
-    <owl:Class rdf:about="http://www.w3.org/2006/time#time:Interval">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/2006/timer#time:TemporalEntity -->
-
-    <owl:Class rdf:about="http://www.w3.org/2006/timer#time:TemporalEntity"/>
-    
-
-
-    <!-- http://www.wikidata.org/entity/Q1656682 -->
-
-    <owl:Class rdf:about="http://www.wikidata.org/entity/Q1656682"/>
-    
-
-
-    <!-- http://xmlns.com/foaf/0.1/Organization -->
-
-    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
-    
-
-
-    <!-- http://xmlns.com/foaf/0.1/Person -->
-
-    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/popdata#Ontology -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Ontology"/>
-    
-
-
-    <!-- http://purl.org/popdata#PaoloRossi -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#PaoloRossi">
-        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Place001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Place001">
-        <rdf:type rdf:resource="http://purl.org/popdata#Place"/>
-        <scopedBy rdf:resource="http://purl.org/popdata#TypoSet001"/>
-        <rdfs:label xml:lang="it">Italia</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Place002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Place002">
-        <rdf:type rdf:resource="http://purl.org/popdata#Place"/>
-        <scopedBy rdf:resource="http://purl.org/popdata#TypoSet002"/>
-        <rdfs:label xml:lang="it">Piemonte</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Place003 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Place003">
-        <rdf:type rdf:resource="http://purl.org/popdata#Place"/>
-        <scopedBy rdf:resource="http://purl.org/popdata#TypoSet003"/>
-        <rdfs:label xml:lang="it">Novara</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Place004 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Place004">
-        <rdf:type rdf:resource="http://purl.org/popdata#Place"/>
-        <scopedBy rdf:resource="http://purl.org/popdata#TypoSet004"/>
-        <rdfs:label xml:lang="it">Novara</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Place005 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Place005">
-        <rdf:type rdf:resource="http://purl.org/popdata#Place"/>
-        <rdfs:label xml:lang="it">Rovezzano</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#PlaceType001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#PlaceType001">
-        <rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
-        <rdfs:label xml:lang="it">Stato</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#PlaceType002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#PlaceType002">
-        <rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
-        <rdfs:label xml:lang="it">Regione</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#PlaceType003 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#PlaceType003">
-        <rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
-        <rdfs:label xml:lang="it">Provincia</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#PlaceType004 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#PlaceType004">
-        <rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
-        <rdfs:label xml:lang="it">Comune</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#Statistic001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#Statistic001">
-        <rdf:type rdf:resource="http://purl.org/popdata#ElectoralStatistic"/>
-        <assignedVotes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">567</assignedVotes>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TempExt001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TempExt001">
-        <rdf:type rdf:resource="http://purl.org/popdata#TemporalExtent"/>
-        <definedBy rdf:resource="http://purl.org/popdata#TimeInterval001"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TempExt002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TempExt002">
-        <rdf:type rdf:resource="http://purl.org/popdata#TemporalExtent"/>
-        <definedBy rdf:resource="http://purl.org/popdata#TimeInterval002"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TimeInstant001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TimeInstant001">
-        <rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1861-03-18T00:00:00</time:inXSDDateTime>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TimeInstant002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TimeInstant002">
-        <rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-06-03T18:31:00+10:00</time:inXSDDateTime>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TimeInstant003 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TimeInstant003">
-        <rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
-        <time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1865-08-13T00:00:00</time:inXSDDateTime>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TimeInterval001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TimeInterval001">
-        <rdf:type rdf:resource="http://www.w3.org/2006/time#time:Interval"/>
-        <time:hasBeginning rdf:resource="http://purl.org/popdata#TimeInstant001"/>
-        <time:hasEnd rdf:resource="http://purl.org/popdata#TimeInstant002"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TimeInterval002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TimeInterval002">
-        <rdf:type rdf:resource="http://www.w3.org/2006/time#time:Interval"/>
-        <time:hasBeginning rdf:resource="http://purl.org/popdata#TimeInstant001"/>
-        <time:hasEnd rdf:resource="http://purl.org/popdata#TimeInstant003"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TypoSet001 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TypoSet001">
-        <rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
-        <hasType rdf:resource="http://purl.org/popdata#PlaceType001"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TypoSet002 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TypoSet002">
-        <rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
-        <hasType rdf:resource="http://purl.org/popdata#PlaceType002"/>
-        <partOf rdf:resource="http://purl.org/popdata#TypoSet001"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TypoSet003 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TypoSet003">
-        <rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
-        <hasType rdf:resource="http://purl.org/popdata#PlaceType003"/>
-        <partOf rdf:resource="http://purl.org/popdata#TypoSet002"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TypoSet004 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TypoSet004">
-        <rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
-        <hasType rdf:resource="http://purl.org/popdata#PlaceType004"/>
-        <partOf rdf:resource="http://purl.org/popdata#TypoSet003"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/popdata#TypoSet005 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/popdata#TypoSet005">
-        <rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
-        <hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt002"/>
-        <hasType rdf:resource="http://purl.org/popdata#PlaceType004"/>
-    </owl:NamedIndividual>
-</rdf:RDF>
-
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns="http://purl.org/popdata"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wd="http://www.wikidata.org/entity/"
+	xmlns:geo="http://www.opengis.net/ont/geosparql#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:wdt="http://www.wikidata.org/prop/direct/"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:frbr="http://purl.org/vocab/frbr/core#"
+	xmlns:ppdt="http://purl.org/popdata#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:time="http://www.w3.org/2006/time#"
+	xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#">
+
+<rdf:Description rdf:about="http://purl.org/popdata">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+	<dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Bailo</dc:creator>
+	<owl:versionInfo xml:lang="en">0.1</owl:versionInfo>
+	<rdfs:comment xml:lang="en">Population data ontology is an ontology for data that describe a geographically and temporally defined population. A syntax to describe the population and its temporally scoped territorial settings is also provided.</rdfs:comment>
+	<rdfs:label xml:lang="en">Population data ontology (PPDT)</rdfs:label>
+	<dc:date xml:lang="en">2017-09-21</dc:date>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Annotation properties -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://purl.org/dc/elements/1.1/creator -->
+
+<rdf:Description rdf:about="http://purl.org/dc/elements/1.1/creator">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/dc/elements/1.1/date -->
+
+<rdf:Description rdf:about="http://purl.org/dc/elements/1.1/date">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2002/07/owl#versionInfo -->
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#versionInfo">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Datatypes -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://www.w3.org/2001/XMLSchema#date -->
+
+<rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+<rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYear">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2001/XMLSchema#gYearMonth -->
+
+<rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Object Properties -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://purl.org/popdata#definedBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#definedBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#describes -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#describes">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#electionFor -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#electionFor">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Election"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Institution"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#followedBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#followedBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<owl:inverseOf rdf:resource="http://purl.org/popdata#follows"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#follows -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#follows">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Place"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#getsSpatialExtentFrom -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#getsSpatialExtentFrom">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<owl:inverseOf rdf:resource="http://purl.org/popdata#givesSpatialExtentTo"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#givesSpatialExtentTo -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#givesSpatialExtentTo">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasElectorate -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasElectorate">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Voting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Electorate"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasPart -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasPart">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<owl:inverseOf rdf:resource="http://purl.org/popdata#partOf"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#HierarchicalSetting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#HierarchicalSetting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasPopulation -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasPopulation">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Electorate"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Population"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasSource -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasSource">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+	<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+	<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasSpatialScope -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasSpatialScope">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#GeographicalSetting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#SpatialScope"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasTemporalScope -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasTemporalScope">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#TemporalScope"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#hasType -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#hasType">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#PlaceType"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#partOf -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#partOf">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Voting"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Place"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#VotingEvent"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#sanctions -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#sanctions">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Result"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#VotingEvent"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#scopedBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#scopedBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#setBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#setBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<owl:inverseOf rdf:resource="http://purl.org/popdata#sets"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Setting"/>
+	<rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+	<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+	<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#sets -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#sets">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+	<rdfs:range rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#spatiallyDefinedBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#spatiallyDefinedBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#definedBy"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#SpatialExtent"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Feature"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#temporallyDefinedBy -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#temporallyDefinedBy">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#definedBy"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#TemporalExtent"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2002/07/owl#hasValue -->
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#hasValue">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#sameAs">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Place"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2003/01/geo/wgs84_pos#hasGeometry -->
+
+<rdf:Description rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#hasGeometry">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Feature"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Geometry"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#hasBeginning -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#hasEnd -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#hasEnd">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Data properties -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://purl.org/popdata#ageVoters -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ageVoters">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+	<rdfs:comment xml:lang="en">size of the voting-age population of the electorate</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#agricultureStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#agricultureStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#assignedVotes -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#assignedVotes">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+	<rdfs:comment xml:lang="en">number of votes assigned to something or someone</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#blankVotes -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#blankVotes">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#climateStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#climateStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#consumerStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#consumerStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#economyStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#economyStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#ecosystemsStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ecosystemsStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#educationStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#educationStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#effectiveVoters -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#effectiveVoters">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#electionStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#electionStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#eligibleVoters -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#eligibleVoters">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<owl:equivalentProperty rdf:resource="http://purl.org/popdata#registeredVoters"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+	<rdfs:comment xml:lang="en">number of people formally registered to vote</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#financeStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#financeStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#governmentStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#governmentStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#healthStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#healthStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#identification -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#identification">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#invalidVotes -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#invalidVotes">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+	<rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/Q2738441</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#istat6d -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#istat6d">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#identification"/>
+	<rdfs:comment xml:lang="en">Identifier for municipalities ("comuni" in Italian) in Italy. It is determined by the province of the municipality. If the province changes the identifier will change accordingly. The first 3 digits indicate the province ("provincia" in Italian).</rdfs:comment>
+	<rdfs:seeAlso xml:lang="en">http://www.istat.it/it/archivio/6789</rdfs:seeAlso>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/P635</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#labourForce -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#labourForce">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	<rdfs:comment xml:lang="en">number of people currently and formally employed or selfemployed</rdfs:comment>
+	<rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/Q13440398</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#labourStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#labourStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#manufacturingStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#manufacturingStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#people -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#people">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	<rdfs:comment xml:lang="en">number of people</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#publicSafetyStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#publicSafetyStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#registeredVoters -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#registeredVoters">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#sampleSize -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#sampleSize">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	<rdfs:seeAlso xml:lang="en">number of people included in a survey</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#statistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#statistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#unemployed -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#unemployed">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	<rdfs:seeAlso xml:lang="en">number of people currently in search of a job</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#unemploymentRate -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#unemploymentRate">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+	<rdfs:seeAlso xml:lang="en">number of unemployed people divided by the people in the labour force</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#inXSDDate -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#inXSDDate">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#inXSDDateTime -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#inXSDDateTime">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#inXSDgYear -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#inXSDgYear">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#inXSDgYearMonth -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#inXSDgYearMonth">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+	<rdfs:domain rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Classes -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://purl.org/popdata#Act -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Act">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#AdministrativePlace -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#AdministrativePlace">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Assembly -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Assembly">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Institution"/>
+	<rdfs:comment xml:lang="en">organisation that uses parliamentary procedures to make decisions</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1752346</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#CensusStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#CensusStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:comment xml:lang="en">statistic of the entire target population</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Election -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Election">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#VotingEvent"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#ElectoralList -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ElectoralList">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#ElectoralPlace -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ElectoralPlace">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#ElectoralStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ElectoralStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:comment xml:lang="en">statistic derived from a formal voting process</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Electorate -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Electorate">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q398089</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Event -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Event">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q1656682</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#GeographicalSetting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#GeographicalSetting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#HierarchicalSetting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#HierarchicalSetting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#IdentificationalSetting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#IdentificationalSetting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Institution -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Institution">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:comment xml:lang="en">structure or mechanism of social order and cooperation governing the behaviour of a population</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q178706</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#InstrumentalStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#InstrumentalStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:comment xml:lang="en">statistic measured with instruments (e.g. place altitude, tweets published)</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Office -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Office">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Institution"/>
+	<rdfs:comment xml:lang="en">service exercised within a public administration</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q294414</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:comment xml:lang="en">geographic point or area</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q2221906</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PlaceType -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PlaceType">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PoliticalParty -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PoliticalParty">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Population -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Population">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:comment xml:lang="en">human population that inhabits a place</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q33829</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Referendum -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Referendum">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#VotingEvent"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Result -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Result">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#SampleStatistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#SampleStatistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Statistic"/>
+	<rdfs:comment xml:lang="en">statistic of a sample of the target population</rdfs:comment>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Setting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Setting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#SpatialExtent -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#SpatialExtent">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#SpatialScope"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#SpatialScope -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#SpatialScope">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Statistic -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Statistic">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#StatisticalPlace -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#StatisticalPlace">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#PlaceType"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TemporalExtent -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TemporalExtent">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#TemporalScope"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TemporalScope -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TemporalScope">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#ToponymalSetting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#ToponymalSetting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypologicalSetting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypologicalSetting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Setting"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Voting -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Voting">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Act"/>
+	<rdfs:comment xml:lang="en">act of an electorate to make a decision or express an opinion</rdfs:comment>
+	<rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q189760</rdfs:seeAlso>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#VotingEvent -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#VotingEvent">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/popdata#Event"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/vocab/frbr/core#Book -->
+
+<rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Book">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/vocab/frbr/core#BookChapter -->
+
+<rdf:Description rdf:about="http://purl.org/vocab/frbr/core#BookChapter">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/vocab/frbr/core#Expression -->
+
+<rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Expression">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/vocab/frbr/core#JournalArticle -->
+
+<rdf:Description rdf:about="http://purl.org/vocab/frbr/core#JournalArticle">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/vocab/frbr/core#WebPage -->
+
+<rdf:Description rdf:about="http://purl.org/vocab/frbr/core#WebPage">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2002/07/owl#Ontology -->
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Ontology">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2003/01/geo/wgs84_pos#Feature -->
+
+<rdf:Description rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Feature">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2003/01/geo/wgs84_pos#Geometry -->
+
+<rdf:Description rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Geometry">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#time:Instant -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#time:Instant">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/time#time:Interval -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/time#time:Interval">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.w3.org/2006/timer#time:TemporalEntity"/>
+</rdf:Description>
+<!--  -->
+<!-- http://www.w3.org/2006/timer#time:TemporalEntity -->
+
+<rdf:Description rdf:about="http://www.w3.org/2006/timer#time:TemporalEntity">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://xmlns.com/foaf/0.1/Organization -->
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!-- http://xmlns.com/foaf/0.1/Person -->
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+</rdf:Description>
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- ################################################################# -->
+<!-- # -->
+<!-- #    Individuals -->
+<!-- # -->
+<!-- ################################################################# -->
+<!--  -->
+<!--  -->
+<!-- http://purl.org/popdata#Ontology -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Ontology">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PaoloRossi -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PaoloRossi">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#Place"/>
+	<ppdt:scopedBy rdf:resource="http://purl.org/popdata#TypoSet001"/>
+	<rdfs:label xml:lang="it">Italia</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#Place"/>
+	<ppdt:scopedBy rdf:resource="http://purl.org/popdata#TypoSet002"/>
+	<rdfs:label xml:lang="it">Piemonte</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place003 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place003">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#Place"/>
+	<ppdt:scopedBy rdf:resource="http://purl.org/popdata#TypoSet003"/>
+	<rdfs:label xml:lang="it">Novara</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place004 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place004">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#Place"/>
+	<ppdt:scopedBy rdf:resource="http://purl.org/popdata#TypoSet004"/>
+	<rdfs:label xml:lang="it">Novara</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Place005 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Place005">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#Place"/>
+	<rdfs:label xml:lang="it">Rovezzano</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PlaceType001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PlaceType001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
+	<rdfs:label xml:lang="it">Stato</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PlaceType002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PlaceType002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
+	<rdfs:label xml:lang="it">Regione</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PlaceType003 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PlaceType003">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
+	<rdfs:label xml:lang="it">Provincia</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#PlaceType004 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#PlaceType004">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#AdministrativePlace"/>
+	<rdfs:label xml:lang="it">Comune</rdfs:label>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#Statistic001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#Statistic001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#ElectoralStatistic"/>
+	<ppdt:assignedVotes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">567</ppdt:assignedVotes>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TempExt001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TempExt001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TemporalExtent"/>
+	<ppdt:definedBy rdf:resource="http://purl.org/popdata#TimeInterval001"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TempExt002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TempExt002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TemporalExtent"/>
+	<ppdt:definedBy rdf:resource="http://purl.org/popdata#TimeInterval002"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TimeInstant001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TimeInstant001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1861-03-18T00:00:00</time:inXSDDateTime>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TimeInstant002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TimeInstant002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-06-03T18:31:00+10:00</time:inXSDDateTime>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TimeInstant003 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TimeInstant003">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://www.w3.org/2006/time#time:Instant"/>
+	<time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1865-08-13T00:00:00</time:inXSDDateTime>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TimeInterval001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TimeInterval001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://www.w3.org/2006/time#time:Interval"/>
+	<time:hasBeginning rdf:resource="http://purl.org/popdata#TimeInstant001"/>
+	<time:hasEnd rdf:resource="http://purl.org/popdata#TimeInstant002"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TimeInterval002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TimeInterval002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://www.w3.org/2006/time#time:Interval"/>
+	<time:hasBeginning rdf:resource="http://purl.org/popdata#TimeInstant001"/>
+	<time:hasEnd rdf:resource="http://purl.org/popdata#TimeInstant003"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypoSet001 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypoSet001">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<ppdt:hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
+	<ppdt:hasType rdf:resource="http://purl.org/popdata#PlaceType001"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypoSet002 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypoSet002">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<ppdt:hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
+	<ppdt:hasType rdf:resource="http://purl.org/popdata#PlaceType002"/>
+	<ppdt:partOf rdf:resource="http://purl.org/popdata#TypoSet001"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypoSet003 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypoSet003">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<ppdt:hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
+	<ppdt:hasType rdf:resource="http://purl.org/popdata#PlaceType003"/>
+	<ppdt:partOf rdf:resource="http://purl.org/popdata#TypoSet002"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypoSet004 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypoSet004">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<ppdt:hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt001"/>
+	<ppdt:hasType rdf:resource="http://purl.org/popdata#PlaceType004"/>
+	<ppdt:partOf rdf:resource="http://purl.org/popdata#TypoSet003"/>
+</rdf:Description>
+<!--  -->
+<!-- http://purl.org/popdata#TypoSet005 -->
+
+<rdf:Description rdf:about="http://purl.org/popdata#TypoSet005">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+	<rdf:type rdf:resource="http://purl.org/popdata#TypologicalSetting"/>
+	<ppdt:hasTemporalScope rdf:resource="http://purl.org/popdata#TempExt002"/>
+	<ppdt:hasType rdf:resource="http://purl.org/popdata#PlaceType004"/>
+</rdf:Description>
+<!--  -->
 <!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
 
+</rdf:RDF>
