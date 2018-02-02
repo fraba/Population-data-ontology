@@ -423,16 +423,9 @@
     <!-- http://purl.org/popdata#ageVoters -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#ageVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">size of the voting-age population of the electorate</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#agricultureStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#agricultureStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
     </owl:DatatypeProperty>
     
 
@@ -440,7 +433,8 @@
     <!-- http://purl.org/popdata#assignedVotes -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#assignedVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">number of votes assigned to something or someone</rdfs:comment>
     </owl:DatatypeProperty>
     
@@ -449,47 +443,24 @@
     <!-- http://purl.org/popdata#blankVotes -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#blankVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/popdata#climateStatistic -->
+    <!-- http://purl.org/popdata#consumerMeasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#climateStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#consumerMeasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyMeasure"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/popdata#consumerStatistic -->
+    <!-- http://purl.org/popdata#economyMeasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#consumerStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#economyStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#economyStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#ecosystemsStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#ecosystemsStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#educationStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#educationStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#economyMeasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
     </owl:DatatypeProperty>
     
 
@@ -497,16 +468,16 @@
     <!-- http://purl.org/popdata#effectiveVoters -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#effectiveVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/popdata#electionStatistic -->
+    <!-- http://purl.org/popdata#electoralMeasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#electionStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#electoralMeasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
     </owl:DatatypeProperty>
     
 
@@ -515,7 +486,8 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#eligibleVoters">
         <owl:equivalentProperty rdf:resource="http://purl.org/popdata#registeredVoters"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">number of people formally registered to vote</rdfs:comment>
     </owl:DatatypeProperty>
     
@@ -550,10 +522,10 @@
     
 
 
-    <!-- http://purl.org/popdata#financeStatistic -->
+    <!-- http://purl.org/popdata#financeMeasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#financeStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#financeMeasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyMeasure"/>
     </owl:DatatypeProperty>
     
 
@@ -564,22 +536,6 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#identification"/>
         <rdfs:comment xml:lang="en">Numeric Identifier of the GeoNames database</rdfs:comment>
         <rdfs:seeAlso xml:lang="en">https://www.wikidata.org/entity/P1566</rdfs:seeAlso>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#governmentStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#governmentStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#healthStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#healthStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
     </owl:DatatypeProperty>
     
 
@@ -595,7 +551,8 @@
     <!-- http://purl.org/popdata#invalidVotes -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#invalidVotes">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q2738441</rdfs:seeAlso>
     </owl:DatatypeProperty>
     
@@ -721,29 +678,108 @@
     
 
 
-    <!-- http://purl.org/popdata#labourForce -->
+    <!-- http://purl.org/popdata#labourMasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#labourForce">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#labourMasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyMeasure"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#manufacturingMeasure -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#manufacturingMeasure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyMeasure"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nFemaleForeigners -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nFemaleForeigners">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nForeigners"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nFemalePeople -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nFemalePeople">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nPeople"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nFemaleResidents -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nFemaleResidents">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nResidents"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nForeigners -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nForeigners">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nMaleForeigners -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nMaleForeigners">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nForeigners"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nMalePeople -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nMalePeople">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nPeople"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nMaleResidents -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nMaleResidents">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#nResidents"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nPeople -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nPeople">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/popdata#nPeopleLabourForce -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nPeopleLabourForce">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourMasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q13440398</rdfs:comment>
         <rdfs:comment xml:lang="en">number of people currently and formally employed or selfemployed</rdfs:comment>
-        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/entity/Q13440398</rdfs:seeAlso>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/popdata#labourStatistic -->
+    <!-- http://purl.org/popdata#nPeopleUnemployed -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#labourStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nPeopleUnemployed">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourMasure"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/popdata#manufacturingStatistic -->
+    <!-- http://purl.org/popdata#nResidents -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#manufacturingStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#economyStatistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#nResidents">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
     </owl:DatatypeProperty>
     
 
@@ -769,20 +805,11 @@
     
 
 
-    <!-- http://purl.org/popdata#people -->
+    <!-- http://purl.org/popdata#percPeopleUnemployed -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#people">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:comment xml:lang="en">number of people</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#publicSafetyStatistic -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#publicSafetyStatistic">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#percPeopleUnemployed">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourMasure"/>
+        <rdfs:comment xml:lang="en">number of unemployed people divided by the people in the labour force</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -790,7 +817,8 @@
     <!-- http://purl.org/popdata#registeredVoters -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#registeredVoters">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electionStatistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#electoralMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
@@ -798,7 +826,7 @@
     <!-- http://purl.org/popdata#sampleSize -->
 
     <owl:DatatypeProperty rdf:about="http://purl.org/popdata#sampleSize">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statistic"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#statisticalMeasure"/>
         <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">number of people included in a survey</rdfs:comment>
@@ -825,9 +853,9 @@
     
 
 
-    <!-- http://purl.org/popdata#statistic -->
+    <!-- http://purl.org/popdata#statisticalMeasure -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#statistic">
+    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#statisticalMeasure">
         <rdfs:domain rdf:resource="http://purl.org/popdata#Statistic"/>
     </owl:DatatypeProperty>
     
@@ -858,26 +886,6 @@
             </rdfs:Datatype>
         </rdfs:range>
         <rdfs:comment xml:lang="en">A Twitter&apos;s user URL.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#unemployed -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#unemployed">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:comment xml:lang="en">number of people currently in search of a job</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/popdata#unemploymentRate -->
-
-    <owl:DatatypeProperty rdf:about="http://purl.org/popdata#unemploymentRate">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/popdata#labourStatistic"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment xml:lang="en">number of unemployed people divided by the people in the labour force</rdfs:comment>
     </owl:DatatypeProperty>
     
 

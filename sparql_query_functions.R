@@ -355,12 +355,17 @@ deleteInterval <- function(interval_uuid) {
   }
 }
 
-createOrGetTemporalExtent <- function(from, to) {
+createOrGetTemporalExtent <- function(from = NA, to = NA, date = NA, interval = TRUE) {
   
   from <- as.Date(from)
   to <- as.Date(to)
+  date <- as.Date(date)
   
-  temporal_extent_uuid <- getTemporalExtent(from, to)
+  if (interval == TRUE) {
+    temporal_extent_uuid <- getTemporalExtentInterval(from, to)
+  } else {
+    temporal_extent_uuid <- getTemporalExtentInstant(date)
+  }
   
   if (is.na(temporal_extent_uuid)) {
     temporal_extent_uuid <- genUUIDs(1)
@@ -377,7 +382,32 @@ createOrGetTemporalExtent <- function(from, to) {
   return(temporal_extent_uuid)
 }
 
-getTemporalExtent <- function(from, to = NA) {
+getTemporalExtentInstant <- function(date) {
+  require(SPARQL)
+  date <- as.Date(date)
+  
+  query <- 
+    sprintf('PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX ppdt: <http://purl.org/popdata#>
+            PREFIX time: <http://www.w3.org/2006/time#>
+            SELECT DISTINCT ?tempExtent (STR(?date) AS ?date_str) WHERE {
+            ?instant time:inXSDDate ?date.
+            ?tempExtent ppdt:temporallyDefinedBy ?instant.
+            FILTER (DATATYPE(?date) = xsd:date && STR(?date) = "%s")
+            }', date)
+
+  res <- SPARQL(endpoint_select, query)    
+  
+  if(nrow(res$results)==0) {
+    return(NA)
+  } else if (nrow(res$results)==1) {
+    return(formatUuid(res$results$tempExtent))
+  } else {
+    stop("Error: duplicated temporal extent")
+  }
+}
+
+getTemporalExtentInterval <- function(from, to = NA) {
   
   # Check if temporal scope relation already exists
   require(SPARQL)
